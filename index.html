@@ -103,7 +103,7 @@
                         <div class="modal-content">
                             <span class="close">&times;</span>
                             <ul class="modal-menu">
-                                <li><a href="#rsvp2">Pre-RSVP</a></li>
+                                <li><a href="#rsvp2">RSVP</a></li>
                                 <li><a href="#intro">Our Story</a></li>
                                 <li><a href="#events_id">Events</a></li>
                                 <li><a href="#photo-upload">Photo Upload</a></li>
@@ -720,6 +720,26 @@ document.addEventListener('DOMContentLoaded', function () {
                 dynamicRsvp.appendChild(guestSection);
             });
 
+            // Add a single email field outside the loop
+            const emailSection = document.createElement("div");
+            emailSection.classList.add("form-group", "row", "mb-3");
+            emailSection.innerHTML = `
+                <hr>
+                <label for="email" class="col-sm-2 col-form-label text-primary font-weight-bold">
+                    Email Reminder
+                </label>
+                <div class="col-sm-10">
+                    <input type="email"
+                           class="form-control rounded-pill border-info shadow-sm"
+                           id="email"
+                           name="email"
+                           placeholder="Please enter your email address"
+                           value=""
+                           style="margin-left: 20px;"
+                           >
+                </div>
+            `;
+                    dynamicRsvp.appendChild(emailSection);
             // Add a final submit button for the RSVP
             const finalSubmitButton = document.createElement("div");
             finalSubmitButton.classList.add("form-group", "row", "text-center");
@@ -744,10 +764,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 ceremony: guest["Wedding"] === "Yes" ? "Yes" : "No", // Convert to "Yes" or "No"
                 allergies: guest["Allergies"] || null, // Assuming allergies are optional
                 meal_preference: guest["Meal Selection"] || null,
+                email: guest["email"] || null,
             };
         }
 
         async function handleFinalSubmit() {
+            const form = document.getElementById("rsvp-form");
+            const formData = new FormData(form);
+            const email = formData.get("email")?.trim(); // Safely get and trim the email field
+
             const guests = Array.from(document.querySelectorAll(".guest-section")).map((section, index) => {
                 const rowNumber = section.getAttribute("data-row-number");
 
@@ -760,6 +785,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     "Goodbye Brunch": section.querySelector(`input[name="goodbyeBrunch${index}"]:checked`)?.value || "No",
                     "Meal Selection": section.querySelector(`select[name="mealChoice${index}"]`)?.value || null,
                     "Allergies": section.querySelector(`input[name="dietaryRestrictions${index}"]`)?.value || null,
+                    "email": email || null,
                 };
             });
 
