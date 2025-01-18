@@ -3,52 +3,180 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Wedding Registry</title>
-    <link rel="stylesheet" href="css/styles.min.css">
+    <title>Lindsey and Travis's Registry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;700&family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body, html {
-            height: 100%;
+        body {
+            font-family: 'Cormorant Garamond', serif;
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #f0f0f0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
         }
-        .center-box {
-            background: white;
-            padding: 20px;
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', cursive;
+            font-size: 48px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        .registry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .registry-item {
+            text-align: center;
+            padding: 30px;
+            background-color: #f9f9f9;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            width: 100%;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-decoration: none; /* Remove underline from links */
+            color: inherit; /* Inherit text color */
+        }
+
+        .registry-item:hover {
+            transform: translateY(-5px);
+            background-color: #f1f1f1;
+        }
+
+        .registry-item h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 24px;
+        }
+
+        .registry-item p {
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .icon {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: #b3c7db;
+        }
+
+        .registry-item h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 24px;
+        }
+
+        .registry-item p {
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #b3c7db;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #92adc7;
+        }
+
+        .thank-you {
+            text-align: center;
+            margin-top: 60px;
+            font-style: italic;
+            font-size: 20px;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .registry-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
+    <script src="https://kit.fontawesome.com/07a7aa3346.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="center-box">
-        <h1 class="text-3xl font-bold text-center mb-8">Our Wedding Registry</h1>
-        <div class="grid grid-cols-3 gap-4">
-            <div class="gift-option">
-                <h3>Send us on a Date</h3>
-                <button>$25</button>
-                <button>$50</button>
-                <button>$100</button>
-                <button>Custom Amount</button>
-            </div>
-            <div class="gift-option">
-                <h3>Help with our Honeymoon</h3>
-                <button>$25</button>
-                <button>$50</button>
-                <button>$100</button>
-                <button>Custom Amount</button>
-            </div>
-            <div class="gift-option">
-                <h3>Help towards a Home</h3>
-                <button>$25</button>
-                <button>$50</button>
-                <button>$100</button>
-                <button>Custom Amount</button>
-            </div>
+    <div class="container">
+        <div class="header">
+            <h1>Registry</h1>
+        </div>
+
+        <div class="intro">
+            <p>Your presence at our wedding is the greatest gift we could ask for. However, if you wish to honor us with a gift, we have created three funds that will help us build our future together. Any contribution would be deeply appreciated.</p>
+        </div>
+
+        <div class="registry-grid">
+            <a href="#" class="registry-item">
+                <div class="registry-content">
+                    <div class="icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Send Us On a Date</h3>
+                    <p>Help us continue to prioritize quality time together! Your gift will fund future date nights, allowing us to keep the romance alive and create special moments together.</p>
+                </div>
+            </a>
+
+            <a href="#" class="registry-item">
+                <div class="registry-content">
+                    <div class="icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>Help With Our Honeymoon</h3>
+                    <p>We're planning our dream honeymoon adventure! Your gift will help us create unforgettable experiences as we begin our journey together as a married couple.</p>
+                </div>
+            </a>
+
+            <a href="#" class="registry-item">
+                <div class="registry-content">
+                    <div class="icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Help Towards A Home</h3>
+                    <p>We're saving for our future home together. Your contribution will help us create a warm and welcoming space where we can build our life and make countless memories.</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="thank-you">
+            <p>Thank you for celebrating with us and being part of our special day! Your love, support, and presence mean the world to us.</p>
         </div>
     </div>
 </body>
