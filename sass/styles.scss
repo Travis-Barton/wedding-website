@@ -386,6 +386,82 @@ Navigation
   visibility: hidden;
   transition: all 300ms ease-in-out;
 }
+/* ==========================================================================
+registry
+========================================================================== */
+.registry {
+  background-color: #b3c7db; /* Use the same background as your header/footer */
+  padding: 40px 20px;
+
+  .registry-title {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  .registry-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .registry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+  }
+
+  .registry-item {
+    text-align: center;
+    border-radius: 12px; /* Slightly rounded corners */
+    padding: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+
+    &:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow */
+      filter: brightness(1.1); /* Slightly brighter */
+    }
+
+    .icon {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      margin: 10px 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #555;
+    }
+  }
+
+  /* Panel-Specific Styles */
+  .date-panel {
+    background: linear-gradient(135deg, #ffccd5, #ffc1c9); /* Rich pink gradient */
+    border: 2px solid #ffb3b3;
+    color: #4a2025; /* Contrast text color */
+  }
+
+  .honeymoon-panel {
+    background: linear-gradient(135deg, #c2ebf5, #a3e5f0); /* Vibrant teal gradient */
+    border: 2px solid #91d4e3;
+    color: #0d3439; /* Contrast text color */
+  }
+
+  .home-panel {
+    background: linear-gradient(135deg, #e2f7dc, #cdeac4); /* Fresh green gradient */
+    border: 2px solid #b7e4bc;
+    color: #1a331a; /* Contrast text color */
+  }
+}
+
+
 
 /* ==========================================================================
 Model
@@ -529,6 +605,7 @@ header {
   ul.primary-nav {
     margin: 0 0 0 75px;
     padding: 0;
+    text-decoration: none;
 
     li {
       display: inline;
@@ -539,6 +616,7 @@ header {
 
         &:hover {
           color: $accent-color;
+          text-decoration: underline;
         }
       }
       &:last-child a {
