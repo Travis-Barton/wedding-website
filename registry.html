@@ -79,9 +79,12 @@
 <div id="registryModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h3 id="modal-title"></h3>
-        <p id="modal-description"></p>
-        <a id="modal-link" href="#" class="btn">Contribute</a>
+        <h3 id="modal-title">Default Title</h3>
+        <p id="modal-description">Default description for the modal.</p>
+        <!-- Add custom content here -->
+        <div class="custom-content">
+            <p>Thank you for considering a contribution to our registry!</p>
+        </div>
     </div>
 </div>
 
@@ -101,16 +104,30 @@
         const modal = document.getElementById('registryModal');
         document.getElementById('modal-title').textContent = title;
         document.getElementById('modal-description').textContent = description;
-        document.getElementById('modal-link').href = link;
-        modal.style.display = 'block'; // Ensure the modal is part of the layout
-        setTimeout(() => modal.classList.add('show'), 10); // Add 'show' with slight delay
+
+        // Add 'show' class after a short delay for smooth transition
+        modal.style.display = 'block';
+        setTimeout(() => modal.classList.add('show'), 10);
     }
 
     function closeModal() {
         const modal = document.getElementById('registryModal');
+
+        // Remove 'show' class and hide the modal after animation finishes
         modal.classList.remove('show');
-        setTimeout(() => (modal.style.display = 'none'), 400); // Wait for animation to finish
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 400); // Match the duration of the transition in your CSS
     }
+
+    // Close modal if clicking outside the modal content
+    window.onclick = function(event) {
+        const modal = document.getElementById('registryModal');
+        const modalContent = modal.querySelector('.modal-content');
+        if (event.target === modal && !modalContent.contains(event.target)) {
+            closeModal();
+        }
+    };
 </script>
 
 <style>
