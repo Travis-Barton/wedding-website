@@ -478,6 +478,25 @@
     </div>
 </section>
 
+<!-- Thanks for Submitting Modal -->
+<div id="thanksModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Thank You!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Thanks for submitting your RSVP. We look forward to seeing you!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <footer>
     <div class="container">
@@ -806,7 +825,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
 
-            alert("All guests processed. Please check for any error messages.");
+            // Show the "Thanks for submitting" modal
+            $('#thanksModal').modal('show');
         }
 
         function showError(message) {
