@@ -19,12 +19,21 @@ $font-serif: 'Playfair Display', serif;
 $font-special: 'Allura', serif;
 $font-body: 'Cormorant Garamond', serif;
 // Global Styles
-body {
+html, body {
   font-family: $font-body;
   font-weight: $light;
   color: $txt-primary;
   -webkit-text-size-adjust: 100%;
-  background-color: #b3c7db; // Ensure proper color
+  margin: 0;
+  padding: 0;
+  //background-color: #b3c7db; // Ensure proper color
+  /* Replace the blue background with a local SVG file */
+  background: url('../img/background.svg') no-repeat center center fixed;
+  background-size: cover; /* Ensures the background covers the entire viewport */
+  min-height: 100vh; /* Ensures the body takes up the full viewport height */
+  box-sizing: border-box;
+
+
 }
 
 h1, h2, h3 {
@@ -57,9 +66,9 @@ h4, h5, h6 {
 /* New class that extends the existing .btn class */
 .pre-rsvp-btn {
   @extend .btn;
-  background-color: #4377af; /* Set your desired background color */
+  background-color: #c4aa78; /* Set your desired background color */
   color: #fff; /* Ensure text color contrasts with background */
-  border-color: #4377af; /* Match border color with background */
+  border-color: #c4aa78; /* Match border color with background */
   padding: 5px 10px; /* Small button padding */
   font-size: 14px; /* Small button font size */
 }
@@ -178,6 +187,48 @@ section .header {
   background-color: #000;
   border-radius: 4px;
 }
+.bubble-text {
+  background-color: #fff; /* White background */
+  border: 2px solid #ccc; /* Border to outline the bubble */
+  border-radius: 25px; /* Rounded corners for the bubble effect */
+  padding: 30px; /* Increase padding for larger text */
+  text-align: center; /* Center-align the text */
+  max-width: 800px; /* Increase max width for a wider bubble */
+  margin: 20px auto; /* Center it horizontally with some vertical margin */
+  font-family: 'Cormorant Garamond', serif; /* Match the font style */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for depth */
+  line-height: 1.6; /* Improve text readability */
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .bubble-text {
+    padding: 10px;
+    margin: 0 auto; /* Center horizontally */
+    max-width: 90%; /* Ensure proper spacing on smaller screens */
+    display: block; /* Reset display for consistent behavior */
+    text-align: center; /* Ensure text alignment is consistent */
+  }
+
+}
+
+.logo-placeholder {
+  width: 200px; /* Adjust width as needed */
+  height: auto; /* Automatically adjust height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto; /* Center and add spacing */
+  overflow: hidden; /* Clip overflow content */
+}
+
+.logo-placeholder img {
+  max-width: 100%; /* Fit within container width */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Ensure image fits inside the container */
+  transform: scaleY(-1); /* Flip image vertically */
+}
+
 /* ==========================================================================
 Countdown Timer
 ========================================================================== */
@@ -862,7 +913,7 @@ Features-stack
       position: absolute;
       width: 100%;
       height: 100%;
-      background-color: rgba($white-color, 0.5);
+      //background-color: rgba($white-color, 0.5);
       -moz-transition: all 300ms ease-in-out;
       -o-transition: all 300ms ease-in-out;
       -webkit-transition: all 300ms ease-in-out;
