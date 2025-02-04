@@ -441,8 +441,8 @@ Navigation
 registry
 ========================================================================== */
 .registry {
-  background-color: #b3c7db; /* Use the same background as your header/footer */
-  padding: 40px 20px;
+  //background-color: #b3c7db; /* Use the same background as your header/footer */
+  padding: 10px 20px;
 
   .registry-title {
     text-align: center;
@@ -452,7 +452,7 @@ registry
   }
 
   .registry-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
   }
 
@@ -466,6 +466,7 @@ registry
     text-align: center;
     border-radius: 12px; /* Slightly rounded corners */
     padding: 30px;
+    border: 2px solid #c4aa78; /* Default border around each registry item */
     transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 
@@ -494,24 +495,23 @@ registry
 
   /* Panel-Specific Styles */
   .date-panel {
-    background: linear-gradient(135deg, #ffccd5, #ffc1c9); /* Rich pink gradient */
-    border: 2px solid #ffb3b3;
-    color: #4a2025; /* Contrast text color */
+    background: linear-gradient(135deg, #ffe8ee, #fae6e9); /* Rich pink gradient */
+    border: 2px solid #fdd5d5; /* Override default border */
+    color: #694c4f; /* Contrast text color */
   }
 
   .honeymoon-panel {
-    background: linear-gradient(135deg, #c2ebf5, #a3e5f0); /* Vibrant teal gradient */
-    border: 2px solid #91d4e3;
-    color: #0d3439; /* Contrast text color */
+    background: linear-gradient(135deg, #dceaf3, #cedee7); /* Vibrant teal gradient */
+    border: 2px solid #b8cedc; /* Override default border */
+    color: #4b6f7a; /* Contrast text color */
   }
 
   .home-panel {
-    background: linear-gradient(135deg, #e2f7dc, #cdeac4); /* Fresh green gradient */
-    border: 2px solid #b7e4bc;
-    color: #1a331a; /* Contrast text color */
+    background: linear-gradient(135deg, #e7f3e5, #dfeadb); /* Fresh green gradient */
+    border: 2px solid #c7e0c9; /* Override default border */
+    color: #617361; /* Contrast text color */
   }
 }
-
 
 
 /* ==========================================================================
