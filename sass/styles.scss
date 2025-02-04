@@ -458,9 +458,15 @@ registry
 
   .registry-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(3, 1fr); // 3 equal columns
+    grid-auto-rows: auto;                // rows will size automatically
+    gap: 30px;                           // adjust gap as needed
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr; // 3x1 on mobile
+    }
   }
+
+
 
   .registry-item {
     text-align: center;
