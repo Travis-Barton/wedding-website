@@ -20,18 +20,23 @@ $font-special: 'Allura', serif;
 $font-body: 'Cormorant Garamond', serif;
 // Global Styles
 html, body {
-  font-family: $font-body;
-  font-weight: $light;
-  color: $txt-primary;
-  -webkit-text-size-adjust: 100%;
   margin: 0;
   padding: 0;
-  /* Replace the blue background with a local SVG file */
-  /* Explicitly fix the background */
-  background: url('../img/background.svg') no-repeat fixed center center;
-  background-size: cover; /* Ensures the background covers the entire viewport */
-  min-height: 100vh; /* Ensures the body takes up the full viewport height */
-  box-sizing: border-box;
+  /* Remove height and width here so that content flows naturally */
+  background: none; /* Remove any global background */
+}
+
+/* Create a pseudo-element that holds the background image */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh; /* 100% of the viewport height */
+  width: 100vw;  /* 100% of the viewport width */
+  background: url('../img/background.svg') no-repeat center center;
+  background-size: cover;
+  z-index: -1;   /* Ensure it's behind all content */
 }
 
 h1, h2, h3 {
