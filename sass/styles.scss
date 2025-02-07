@@ -38,7 +38,7 @@ body::before {
 }
 @media (max-width: 768px) {
   body::before {
-    background-attachment: scroll; // Use scroll on mobile for consistency
+    background-attachment: fixed; // Use scroll on mobile for consistency
   }
 }
 
