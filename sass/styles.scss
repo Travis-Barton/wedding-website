@@ -22,21 +22,19 @@ $font-body: 'Cormorant Garamond', serif;
 html, body {
   margin: 0;
   padding: 0;
-  /* Remove height and width here so that content flows naturally */
-  background: none; /* Remove any global background */
+  background: none;
 }
 
-/* Create a pseudo-element that holds the background image */
 body::before {
   content: "";
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh; /* 100% of the viewport height */
-  width: 100vw;  /* 100% of the viewport width */
+  width: 100vw;
+  height: 100vh;
   background: url('../img/background.svg') no-repeat center center;
   background-size: cover;
-  z-index: -1;   /* Ensure it's behind all content */
+  z-index: -1;
 }
 
 h1, h2, h3 {
