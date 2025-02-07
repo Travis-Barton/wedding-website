@@ -36,6 +36,11 @@ body::before {
   background-size: cover;
   z-index: -1;
 }
+@media (max-width: 768px) {
+  body::before {
+    background-attachment: scroll; // Use scroll on mobile for consistency
+  }
+}
 
 h1, h2, h3 {
   font-family: $font-script;
