@@ -26,15 +26,12 @@ html, body {
   -webkit-text-size-adjust: 100%;
   margin: 0;
   padding: 0;
-  //background-color: #b3c7db; // Ensure proper color
   /* Replace the blue background with a local SVG file */
-  background: url('../img/background.svg') no-repeat center center fixed;
+  background: url('../img/background.svg') no-repeat center center;
+  background-attachment: fixed; /* Explicitly fix the background */
   background-size: cover; /* Ensures the background covers the entire viewport */
   min-height: 100vh; /* Ensures the body takes up the full viewport height */
   box-sizing: border-box;
-
-
-
 }
 
 h1, h2, h3 {
