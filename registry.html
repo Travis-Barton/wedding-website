@@ -1,10 +1,11 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>Registry</title>
-    <meta name="description" content="We would like to invite you to our big day.">
+    <meta name="description" content="Wedding Registry">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;700&family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
@@ -13,7 +14,6 @@
     <script src="https://kit.fontawesome.com/07a7aa3346.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<!-- Navigation Section -->
 <section class="navigation">
     <header>
         <div class="header-content">
@@ -21,8 +21,8 @@
             <div class="header-nav">
                 <nav>
                     <ul class="primary-nav">
-                        <li><a href="index.html" style="color: black; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Home</a></li>
-                        <li><a href="faq.html" style="color: black; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">FAQ</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
                     </ul>
                     <ul class="member-actions">
                         <li><a href="index.html#rsvp2" class="btn-white btn-small">RSVP</a></li>
@@ -33,108 +33,89 @@
     </header>
 </section>
 
-<!-- Registry Content Section -->
 <section class="registry">
     <div class="bubble-text">
-        <div class="logo-placeholder" style="width: 100%; display: flex; justify-content: center; align-items: center; margin: 0 auto;">
+        <div class="logo-placeholder">
             <img src="img/logo-lg-no-text.png" alt="Logo without text" style="transform: scaleY(-1);">
         </div>
         <div class="registry-container">
-        <h2 class="faq-heading">Registry</h2>
+            <h2 class="faq-heading">Registry</h2>
             <hr style="color: #84755e">
             <br>
-
-        <div class="intro">
-        </div>
-        <div class="registry-grid">
-                <!-- Registry Item 1 -->
-
-                <div class="registry-item date-panel" data-toggle="modal" data-target="#registryModal" onclick="document.getElementById('modal-title').textContent='Send Us On a Date'; document.getElementById('modal-description').textContent='Help us continue to prioritize quality time together and create special moments.';">
+            <div class="registry-grid">
+                <div class="registry-item date-panel" onclick="openRegistryModal('Send Us On a Date', 'Help us continue to prioritize quality time together and create special moments.')">
                     <div class="registry-content">
                         <div class="icon">
                             <i class="fas fa-heart"></i>
                         </div>
                         <h3>Send Us On a Date</h3>
-<!--                        <p>Help us continue to prioritize quality time together and create special moments.</p>-->
                     </div>
                 </div>
 
-
-                <!-- Registry Item 2 -->
-
-                <div class="registry-item honeymoon-panel" data-toggle="modal" data-target="#registryModal" onclick="document.getElementById('modal-title').textContent='Help With Our Honeymoon'; document.getElementById('modal-description').textContent='We\'re planning an adventure to start our married life together.';">
+                <div class="registry-item honeymoon-panel" onclick="openRegistryModal('Help With Our Honeymoon', 'We\'re planning an adventure to start our married life together.')">
                     <div class="registry-content">
                         <div class="icon">
                             <i class="fas fa-plane"></i>
                         </div>
                         <h3>Help With Our Honeymoon</h3>
-<!--                        <p>We’re planning an adventure to start our married life together.</p>-->
                     </div>
                 </div>
 
-
-                <!-- Registry Item 3 -->
-
-                <div class="registry-item home-panel" data-toggle="modal" data-target="#registryModal" onclick="document.getElementById('modal-title').textContent='Help Towards A Home'; document.getElementById('modal-description').textContent='We\'re saving for our future home to build a life together.';">
+                <div class="registry-item home-panel" onclick="openRegistryModal('Help Towards A Home', 'We\'re saving for our future home to build a life together.')">
                     <div class="registry-content">
                         <div class="icon">
                             <i class="fas fa-home"></i>
                         </div>
                         <h3>Help Towards A Home</h3>
-<!--                        <p>We’re saving for our future home to build a life together.</p>-->
                     </div>
                 </div>
-
+            </div>
         </div>
-    </div>
     </div>
 </section>
 
-<!-- Modal -->
 <div id="registryModal" class="modal">
     <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h3 id="modal-title">Default Title</h3>
-        <p id="modal-description">Default description for the modal.</p>
-        <div class="amount-options text-center" style="margin: 20px 0;">
-        <div class="amount-buttons" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0;">
-            <button onclick="setAmount(25)" class="btn btn-outline-primary">$25</button>
-            <button onclick="setAmount(50)" class="btn btn-outline-primary">$50</button>
-            <button onclick="setAmount(100)" class="btn btn-outline-primary">$100</button>
+        <span class="close">&times;</span>
+        <h3 id="modal-title"></h3>
+        <p id="modal-description"></p>
+        <div class="amount-options">
+            <div class="amount-buttons">
+                <button onclick="setAmount(25)" class="btn btn-outline-primary">$25</button>
+                <button onclick="setAmount(50)" class="btn btn-outline-primary">$50</button>
+                <button onclick="setAmount(100)" class="btn btn-outline-primary">$100</button>
+            </div>
+            <div class="custom-amount">
+                <label for="custom-amount">Custom Amount:</label>
+                <input type="number" id="custom-amount" min="25" max="500" step="25" onchange="setAmount(this.value)">
+            </div>
+            <h4>Amount: $<span id="amount-display">0</span></h4>
         </div>
-        <div class="custom-amount" style="margin: 20px 0;">
-            <label for="custom-amount">Custom Amount:</label>
-            <input type="number" id="custom-amount" min="25" max="500" step="25" 
-                   onchange="setAmount(this.value)" style="width: 100px; margin-left: 10px;">
+        <div class="payment-options">
+            <div class="payment-option" onclick="handlePayment('venmo')">
+                <i class="fab fa-venmo"></i>
+                <p>Venmo<br>@travis-barton12</p>
+            </div>
+            <div class="payment-option" onclick="handlePayment('paypal')">
+                <i class="fab fa-paypal"></i>
+                <p>PayPal<br>travisbarton2025</p>
+            </div>
+            <div class="payment-option" onclick="handlePayment('zelle')">
+                <i class="fas fa-money-bill-wave"></i>
+                <p>Zelle<br>Click to copy info</p>
+            </div>
         </div>
-        <h4>Amount: $<span id="amount-display">0</span></h4>
-    </div>
-    <div class="payment-options" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0;">
-        <div class="payment-option" onclick="handlePayment('venmo')" style="cursor: pointer; text-align: center; padding: 15px; border: 1px solid #ccc; border-radius: 8px;">
-            <i class="fab fa-venmo" style="font-size: 24px; color: #3D95CE;"></i>
-            <p>Venmo<br>@travis-barton12</p>
-        </div>
-        <div class="payment-option" onclick="handlePayment('paypal')" style="cursor: pointer; text-align: center; padding: 15px; border: 1px solid #ccc; border-radius: 8px;">
-            <i class="fab fa-paypal" style="font-size: 24px; color: #003087;"></i>
-            <p>PayPal<br>travisbarton2025</p>
-        </div>
-        <div class="payment-option" onclick="handlePayment('zelle')" style="cursor: pointer; text-align: center; padding: 15px; border: 1px solid #ccc; border-radius: 8px;">
-            <i class="fas fa-money-bill-wave" style="font-size: 24px; color: #6B0F9C;"></i>
-            <p>Zelle<br>Click to copy info</p>
-        </div>
-    </div>
-        <div id="zelle-info" style="display: none; text-align: center; margin-top: 10px;">
+        <div id="zelle-info" style="display: none;">
             Phone: (408) 826-2999<br>
             Email: sivartnotrab@gmail.com
         </div>
     </div>
 </div>
 
-<!-- Footer -->
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 text-center content" style="text-align: center;">
+            <div class="col-sm-12 text-center content">
                 <p>Crafted by Travis with lots of <span class="fa fa-heart pulse2"></span> for Lindsey</p>
             </div>
         </div>
@@ -142,44 +123,45 @@
 </footer>
 
 <script>
-    let currentAmount = 0;
-    
-    function setAmount(amount) {
-        currentAmount = parseInt(amount);
-        document.getElementById('amount-display').textContent = currentAmount;
-    }
-    
-    function openModal(title, description) {
-        const modal = document.getElementById('registryModal');
-        document.getElementById('modal-title').textContent = title;
-        document.getElementById('modal-description').textContent = description;
-        setAmount(25); // Set default amount
-        modal.style.display = 'block';
-        setTimeout(() => modal.classList.add('show'), 10);
-    }
-    
-    function handlePayment(method) {
-        if (currentAmount < 25) {
-            alert('Please select an amount of $25 or more');
-            return;
-        }
-        
-        switch(method) {
-            case 'venmo':
-                window.open(`https://venmo.com/travis-barton12?txn=pay&amount=${currentAmount}&note=${document.getElementById('modal-title').textContent}`);
-                break;
-            case 'paypal':
-                window.open(`https://paypal.me/travisbarton2025/${currentAmount}`);
-                break;
-            case 'zelle':
-                copyZelleInfo();
-                break;
-        }
+let currentAmount = 0;
+
+function openRegistryModal(title, description) {
+    const modal = document.getElementById('registryModal');
+    document.getElementById('modal-title').textContent = title;
+    document.getElementById('modal-description').textContent = description;
+    setAmount(25);
+    modal.style.display = 'block';
+}
+
+function setAmount(amount) {
+    currentAmount = parseInt(amount);
+    document.getElementById('amount-display').textContent = currentAmount;
+}
+
+function handlePayment(method) {
+    if (currentAmount < 25) {
+        alert('Please select an amount of $25 or more');
+        return;
     }
 
-    function copyZelleInfo() {
-        const zelleInfo = "Phone: (408) 826-2999\nEmail: sivartnotrab@gmail.com";
-        navigator.clipboard.writeText(zelleInfo).then(() => {
+    const title = document.getElementById('modal-title').textContent;
+    switch(method) {
+        case 'venmo':
+            window.open(`https://venmo.com/travis-barton12?txn=pay&amount=${currentAmount}&note=${title}`);
+            break;
+        case 'paypal':
+            window.open(`https://paypal.me/travisbarton2025/${currentAmount}`);
+            break;
+        case 'zelle':
+            copyZelleInfo();
+            break;
+    }
+}
+
+function copyZelleInfo() {
+    const zelleInfo = "Phone: (408) 826-2999\nEmail: sivartnotrab@gmail.com";
+    navigator.clipboard.writeText(zelleInfo)
+        .then(() => {
             const zelleDiv = document.getElementById('zelle-info');
             zelleDiv.style.display = 'block';
             zelleDiv.innerHTML += '<br><span style="color: green;">Copied to clipboard!</span>';
@@ -188,81 +170,113 @@
                 zelleDiv.innerHTML = zelleDiv.innerHTML.replace('<br><span style="color: green;">Copied to clipboard!</span>', '');
             }, 2000);
         });
+}
+
+// Close modal functionality
+document.querySelector('.close').addEventListener('click', () => {
+    document.getElementById('registryModal').style.display = 'none';
+});
+
+window.addEventListener('click', (event) => {
+    const modal = document.getElementById('registryModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
     }
-
-    function closeModal() {
-        const modal = document.getElementById('registryModal');
-
-        // Remove 'show' class and hide the modal after animation finishes
-        modal.classList.remove('show');
-        setTimeout(() => {
-            modal.style.display = 'none';
-        }, 400); // Match the duration of the transition in your CSS
-    }
-
-    // Close modal if clicking outside the modal content
-    window.onclick = function(event) {
-        const modal = document.getElementById('registryModal');
-        const modalContent = modal.querySelector('.modal-content');
-        if (event.target === modal && !modalContent.contains(event.target)) {
-            closeModal();
-        }
-    };
+});
 </script>
 
 <style>
-    /* Registry Grid */
-    .registry-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-    }
+.registry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
 
-    /* Modal styles */
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        opacity: 0;
-        transform: scale(0.95);
-        transition: opacity 0.4s ease, transform 0.4s ease;
-    }
+.registry-item {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
 
-    .modal.show {
-        display: block;
-        opacity: 1;
-        transform: scale(1);
-    }
+.registry-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
 
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.amount-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.custom-amount {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.payment-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.payment-option {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.payment-option:hover {
+    background-color: #f5f5f5;
+}
+
+@media (max-width: 768px) {
     .modal-content {
-        background-color: white;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #ccc;
-        width: 80%;
-        max-width: 500px;
-        border-radius: 10px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        margin: 10% auto;
+        width: 95%;
     }
-    body {
-        margin: 0;
-        padding: 0;
-        height: 100vh; /* Ensure the body takes up exactly the viewport height */
-        overflow-y: auto; /* Allow scrolling only for overflowing content */
+    
+    .payment-options {
+        grid-template-columns: 1fr;
     }
-
-    html {
-        height: 100%; /* Ensure the html element also takes up full height */
-        overflow-y: hidden; /* Prevent scrolling past the content */
-    }
+}
 </style>
 </body>
 </html>
