@@ -96,23 +96,33 @@
         <span class="close" onclick="closeModal()">&times;</span>
         <h3 id="modal-title">Default Title</h3>
         <p id="modal-description">Default description for the modal.</p>
-        <div id="payment-amount" class="text-center" style="margin: 20px 0;">
-            <h4>Amount: $<span id="amount-display">0</span></h4>
+        <div class="amount-options text-center" style="margin: 20px 0;">
+        <div class="amount-buttons" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0;">
+            <button onclick="setAmount(25)" class="btn btn-outline-primary">$25</button>
+            <button onclick="setAmount(50)" class="btn btn-outline-primary">$50</button>
+            <button onclick="setAmount(100)" class="btn btn-outline-primary">$100</button>
         </div>
-        <div class="payment-options" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0;">
-            <div class="payment-option" onclick="window.open('https://venmo.com/travis-barton12')" style="cursor: pointer; text-align: center; padding: 15px; border: 1px solid #ccc; border-radius: 8px;">
-                <i class="fab fa-venmo" style="font-size: 24px; color: #3D95CE;"></i>
-                <p>Venmo<br>@travis-barton12</p>
-            </div>
-            <div class="payment-option" onclick="window.open('https://paypal.me/travisbarton2025')" style="cursor: pointer; text-align: center; padding: 15px; border: 1px solid #ccc; border-radius: 8px;">
-                <i class="fab fa-paypal" style="font-size: 24px; color: #003087;"></i>
-                <p>PayPal<br>travisbarton2025</p>
-            </div>
-            <div class="payment-option" onclick="copyZelleInfo()" style="cursor: pointer; text-align: center; padding: 15px; border: 1px solid #ccc; border-radius: 8px;">
-                <i class="fas fa-money-bill-wave" style="font-size: 24px; color: #6B0F9C;"></i>
-                <p>Zelle<br>Click to copy info</p>
-            </div>
+        <div class="custom-amount" style="margin: 20px 0;">
+            <label for="custom-amount">Custom Amount:</label>
+            <input type="number" id="custom-amount" min="25" max="500" step="25" 
+                   onchange="setAmount(this.value)" style="width: 100px; margin-left: 10px;">
         </div>
+        <h4>Amount: $<span id="amount-display">0</span></h4>
+    </div>
+    <div class="payment-options" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0;">
+        <div class="payment-option" onclick="handlePayment('venmo')" style="cursor: pointer; text-align: center; padding: 15px; border: 1px solid #ccc; border-radius: 8px;">
+            <i class="fab fa-venmo" style="font-size: 24px; color: #3D95CE;"></i>
+            <p>Venmo<br>@travis-barton12</p>
+        </div>
+        <div class="payment-option" onclick="handlePayment('paypal')" style="cursor: pointer; text-align: center; padding: 15px; border: 1px solid #ccc; border-radius: 8px;">
+            <i class="fab fa-paypal" style="font-size: 24px; color: #003087;"></i>
+            <p>PayPal<br>travisbarton2025</p>
+        </div>
+        <div class="payment-option" onclick="handlePayment('zelle')" style="cursor: pointer; text-align: center; padding: 15px; border: 1px solid #ccc; border-radius: 8px;">
+            <i class="fas fa-money-bill-wave" style="font-size: 24px; color: #6B0F9C;"></i>
+            <p>Zelle<br>Click to copy info</p>
+        </div>
+    </div>
         <div id="zelle-info" style="display: none; text-align: center; margin-top: 10px;">
             Phone: (408) 826-2999<br>
             Email: sivartnotrab@gmail.com
@@ -132,23 +142,39 @@
 </footer>
 
 <script>
-    function getUrlParameter(name) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(name);
+    let currentAmount = 0;
+    
+    function setAmount(amount) {
+        currentAmount = parseInt(amount);
+        document.getElementById('amount-display').textContent = currentAmount;
     }
-
-    function openModal(title, description, link) {
+    
+    function openModal(title, description) {
         const modal = document.getElementById('registryModal');
         document.getElementById('modal-title').textContent = title;
         document.getElementById('modal-description').textContent = description;
-
-        // Get amount from URL parameter
-        const amount = getUrlParameter('amount') || '0';
-        document.getElementById('amount-display').textContent = amount;
-
-        // Add 'show' class after a short delay for smooth transition
+        setAmount(25); // Set default amount
         modal.style.display = 'block';
         setTimeout(() => modal.classList.add('show'), 10);
+    }
+    
+    function handlePayment(method) {
+        if (currentAmount < 25) {
+            alert('Please select an amount of $25 or more');
+            return;
+        }
+        
+        switch(method) {
+            case 'venmo':
+                window.open(`https://venmo.com/travis-barton12?txn=pay&amount=${currentAmount}&note=${document.getElementById('modal-title').textContent}`);
+                break;
+            case 'paypal':
+                window.open(`https://paypal.me/travisbarton2025/${currentAmount}`);
+                break;
+            case 'zelle':
+                copyZelleInfo();
+                break;
+        }
     }
 
     function copyZelleInfo() {
