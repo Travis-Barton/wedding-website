@@ -129,7 +129,15 @@ function openRegistryModal(title, description) {
     const modal = document.getElementById('registryModal');
     document.getElementById('modal-title').textContent = title;
     document.getElementById('modal-description').textContent = description;
-    setAmount(25);
+    
+    // Set default amount based on selection
+    let defaultAmount = 25;
+    if (title.includes('Honeymoon')) {
+        defaultAmount = 50;
+    } else if (title.includes('Home')) {
+        defaultAmount = 100;
+    }
+    setAmount(defaultAmount);
     modal.style.display = 'block';
 }
 
