@@ -49,7 +49,7 @@
         <div class="registry-grid">
                 <!-- Registry Item 1 -->
 
-                <div class="registry-item date-panel" onclick="openModal('Send Us On a Date', 'Help us continue to prioritize quality time together and create special moments.', 'payment_redirect.html?gift=datefund')">
+                <div class="registry-item date-panel" data-toggle="modal" data-target="#registryModal" onclick="document.getElementById('modal-title').textContent='Send Us On a Date'; document.getElementById('modal-description').textContent='Help us continue to prioritize quality time together and create special moments.';">
                     <div class="registry-content">
                         <div class="icon">
                             <i class="fas fa-heart"></i>
@@ -62,7 +62,7 @@
 
                 <!-- Registry Item 2 -->
 
-                <div class="registry-item honeymoon-panel" onclick="openModal('Help With Our Honeymoon', 'We\'re planning an adventure to start our married life together.', 'payment_redirect.html?gift=honeymoonfund')">
+                <div class="registry-item honeymoon-panel" data-toggle="modal" data-target="#registryModal" onclick="document.getElementById('modal-title').textContent='Help With Our Honeymoon'; document.getElementById('modal-description').textContent='We\'re planning an adventure to start our married life together.';">
                     <div class="registry-content">
                         <div class="icon">
                             <i class="fas fa-plane"></i>
@@ -75,7 +75,7 @@
 
                 <!-- Registry Item 3 -->
 
-                <div class="registry-item home-panel" onclick="openModal('Help Towards A Home', 'We\'re saving for our future home to build a life together.', 'payment_redirect.html?gift=homefund')">
+                <div class="registry-item home-panel" data-toggle="modal" data-target="#registryModal" onclick="document.getElementById('modal-title').textContent='Help Towards A Home'; document.getElementById('modal-description').textContent='We\'re saving for our future home to build a life together.';">
                     <div class="registry-content">
                         <div class="icon">
                             <i class="fas fa-home"></i>
