@@ -26,14 +26,12 @@ html, body {
   -webkit-text-size-adjust: 100%;
   margin: 0;
   padding: 0;
-  //background-color: #b3c7db; // Ensure proper color
-  /* Replace the blue background with a local SVG file */
+  width: 100%;
+  overflow-x: hidden;
   background: url('../img/background.svg') no-repeat center center fixed;
-  background-size: cover; /* Ensures the background covers the entire viewport */
-  min-height: 100vh; /* Ensures the body takes up the full viewport height */
+  background-size: cover;
+  min-height: 100vh;
   box-sizing: border-box;
-
-
 }
 
 h1, h2, h3 {
@@ -640,7 +638,8 @@ header {
   padding: 50px 0;
   border-bottom: solid 1px rgba(255, 255, 255, 0.2);
   position: relative;
-  width: 1170px;
+  width: 100%;
+  max-width: 1170px;
   margin: 0 auto;
   transition: padding 300ms ease-in-out;
 
