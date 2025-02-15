@@ -1,14 +1,8 @@
 # todo:
-- [x] Add images of us 
-- [ ] add brains to pre-rsvp form
-- [ ] Add a countdown timer
-- [ ] Edit our story
-- [x] Add a photo upload applet for guests to upload photos
-- [ ] update RSVP to use our preferred style with a modal form that autocompletes their party and lets them rsvp for all events at once
-- [x] Change image to text that reads "Lindsey + Travis \n 2025" in nice cursive font that appears dynamically on the page (hard)
-- [ ] Make the "venue" button do something?
-- [ ] less room between calendar and how we met 
-- [ ] Logo under pre-rsvp form
+- [ ] Get registry up and running
+- [ ] Unify the theme across the whole site (use blue and fancy font from FAQ in main page)
+- [ ] (?) break the travel into two sections: one for the room block and the rest for "any Travel"
+- [ ] alter colors on registry page
 
 
 # Wedding Website

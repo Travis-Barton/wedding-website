@@ -20,20 +20,26 @@ $font-special: 'Allura', serif;
 $font-body: 'Cormorant Garamond', serif;
 // Global Styles
 html, body {
-  font-family: $font-body;
-  font-weight: $light;
-  color: $txt-primary;
-  -webkit-text-size-adjust: 100%;
   margin: 0;
   padding: 0;
-  //background-color: #b3c7db; // Ensure proper color
-  /* Replace the blue background with a local SVG file */
-  background: url('../img/background.svg') no-repeat center center fixed;
-  background-size: cover; /* Ensures the background covers the entire viewport */
-  min-height: 100vh; /* Ensures the body takes up the full viewport height */
-  box-sizing: border-box;
+  background: none;
+}
 
-
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('../img/background.svg') no-repeat center center;
+  background-size: cover;
+  z-index: -1;
+}
+@media (max-width: 768px) {
+  body::before {
+    background-attachment: fixed; // Use scroll on mobile for consistency
+  }
 }
 
 h1, h2, h3 {
