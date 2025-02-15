@@ -5,28 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>Registry</title>
     <meta name="description" content="Wedding Registry">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/styles.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;700&family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <script src="https://kit.fontawesome.com/07a7aa3346.js?v=1" crossorigin="anonymous"></script>
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 <body>
 <section class="navigation">
     <header>
         <div class="header-content">
-            <div class="logo"><a href="index.html"><img src="img/logo.png" alt="Logo"></a></div>
-            <div class="header-nav">
-                <nav>
-                    <ul class="primary-nav">
-                        <li><a href="index.html" style="color: black; text-decoration: none;">Home</a></li>
-                        <li><a href="faq.html" style="color: black; text-decoration: none;">FAQ</a></li>
-                    </ul>
-                    <ul class="member-actions">
-                        <li><a href="index.html#rsvp2" class="btn-white btn-small">RSVP</a></li>
-                    </ul>
-                </nav>
+            <!-- Logo -->
+            <div class="logo">
+                <a href="index.html">
+                    <div class="logo"><a href="index.html"><img src="img/logo.png" alt="Logo" style="width: 50px; height: auto; padding: 8px 45px;"></a></div>
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="header-nav">
+                <ul class="primary-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="travel.html">Travel</a></li>
+                </ul>
+                <ul class="member-actions">
+                    <li><a href="index.html#rsvp2" class="btn-white btn-small">RSVP</a></li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Menu Icon -->
+            <div class="navicon">
+                <button class="nav-toggle" aria-label="Open menu">
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Modal -->
+        <div id="menuModal" class="modal">
+            <div class="modal-content">
+                <button class="close" aria-label="Close menu">&times;</button>
+                <ul class="modal-menu">
+                    <li><a href="#invitation">RSVP</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="travel.html">Travel</a></li>
+                    <img src="img/fancy_sep.png" alt="Decorative line" class="nav-divider">
+                    <li><a href="#intro">Our Story</a></li>
+                    <li><a href="#events_id">Events</a></li>
+                    <li><a href="#photo-upload">Photo Upload</a></li>
+                    <li><a href="#eng-pics">Engagement Photos</a></li>
+                </ul>
             </div>
         </div>
     </header>
@@ -194,6 +225,7 @@ window.addEventListener('click', (event) => {
 </script>
 
 <style>
+
 html, body {
     width: 100%;
     overflow-x: hidden;
