@@ -42,7 +42,7 @@
             <hr style="color: #84755e">
             <br>
             <div class="registry-grid">
-                <div class="registry-item date-panel" onclick="openRegistryModal('Send Us On a Date', 'Help us continue to prioritize quality time together and create special moments.')">
+                <div class="registry-item date-panel" onclick="openRegistryModal('Send Us On a Date', 'Send Us On a Date')">
                     <div class="registry-content">
                         <div class="icon">
                             <i class="fas fa-heart"></i>
@@ -51,7 +51,7 @@
                     </div>
                 </div>
 
-                <div class="registry-item honeymoon-panel" onclick="openRegistryModal('Help With Our Honeymoon', 'We\'re planning an adventure to start our married life together.')">
+                <div class="registry-item honeymoon-panel" onclick="openRegistryModal('Help With Our Honeymoon', 'Honeymoon Fund')">
                     <div class="registry-content">
                         <div class="icon">
                             <i class="fas fa-plane"></i>
@@ -60,7 +60,7 @@
                     </div>
                 </div>
 
-                <div class="registry-item home-panel" onclick="openRegistryModal('Help Towards A Home', 'We\'re saving for our future home to build a life together.')">
+                <div class="registry-item home-panel" onclick="openRegistryModal('Help Towards A Home', 'Home Fund')">
                     <div class="registry-content">
                         <div class="icon">
                             <i class="fas fa-home"></i>
@@ -92,7 +92,7 @@
         </div>
         <div class="payment-options">
             <div class="payment-option" onclick="handlePayment('venmo')">
-                <i class="fab fa-venmo"></i>
+                <i class="fab fa-square-vimeo"></i>
                 <p>Venmo<br>@travis-barton12</p>
             </div>
             <div class="payment-option" onclick="handlePayment('paypal')">
@@ -126,8 +126,9 @@ let currentAmount = 0;
 
 function openRegistryModal(title, description) {
     const modal = document.getElementById('registryModal');
-    document.getElementById('modal-title').textContent = title;
-    document.getElementById('modal-description').textContent = description;
+    // document.getElementById('modal-title').textContent = title;
+    // document.getElementById('modal-description').textContent = description;
+    document.getElementById('modal-title').textContent = description;
 
     // Set default amount based on selection
     let defaultAmount = 25;
@@ -193,6 +194,10 @@ window.addEventListener('click', (event) => {
 </script>
 
 <style>
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
 .registry-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -229,9 +234,15 @@ window.addEventListener('click', (event) => {
     margin: 15% auto;
     padding: 20px;
     border-radius: 8px;
-    width: 90%;
+    width: 20%;
     max-width: 500px;
     position: relative;
+}
+@media (max-width: 768px) {
+    .modal-content {
+        max-width: 80vw;
+
+    }
 }
 
 .close {
@@ -256,11 +267,42 @@ window.addEventListener('click', (event) => {
 
 .payment-options {
     grid-template-columns: 1fr;
+    display: grid;
+    gap: 20px;
+
 }
 
 .amount-buttons button.active {
     background-color: #007bff;
     color: white;
+}
+
+.payment-option {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    background-color: #f8f9fd;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.payment-option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: #e9ecef;
+}
+
+.payment-option i {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.payment-option p {
+    margin: 0;
+    font-size: 16px;
+    color: #343a40;
 }
 
 @media (max-width: 768px) {
