@@ -168,7 +168,7 @@ function handlePayment(method) {
 
 function copyZelleInfo() {
     const zelleInfo = "Phone: (408) 826-2999\nEmail: sivartnotrab@gmail.com";
-    navigator.clipboard.writeText(zelleInfo)
+    navigator.clipboard.writeText("(408) 826-2999")
         .then(() => {
             const zelleDiv = document.getElementById('zelle-info');
             zelleDiv.style.display = 'block';
