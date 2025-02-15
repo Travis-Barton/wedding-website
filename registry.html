@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Registry</title>
+    <meta name="description" content="Wedding Registry">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover">
+    <link rel="stylesheet" href="css/styles.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;700&family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <script src="https://kit.fontawesome.com/07a7aa3346.js?v=1" crossorigin="anonymous"></script>
+</head>
+<body>
+<section class="navigation">
+    <header>
+        <div class="header-content">
+            <div class="logo"><a href="index.html"><img src="img/logo.png" alt="Logo"></a></div>
+            <div class="header-nav">
+                <nav>
+                    <ul class="primary-nav">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                    <ul class="member-actions">
+                        <li><a href="index.html#rsvp2" class="btn-white btn-small">RSVP</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+</section>
+
+<section class="registry">
+    <div class="bubble-text">
+        <div class="logo-placeholder">
+            <img src="img/logo-lg-no-text.png" alt="Logo without text" style="transform: scaleY(-1);">
+        </div>
+        <div class="registry-container">
+            <h2 class="faq-heading">Registry</h2>
+            <hr style="color: #84755e">
+            <br>
+            <div class="registry-grid">
+                <div class="registry-item date-panel" onclick="openRegistryModal('Send Us On a Date', 'Send Us On a Date')">
+                    <div class="registry-content">
+                        <div class="icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Send Us On a Date</h3>
+                    </div>
+                </div>
+
+                <div class="registry-item honeymoon-panel" onclick="openRegistryModal('Help With Our Honeymoon', 'Honeymoon Fund')">
+                    <div class="registry-content">
+                        <div class="icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <h3>Help With Our Honeymoon</h3>
+                    </div>
+                </div>
+
+                <div class="registry-item home-panel" onclick="openRegistryModal('Help Towards A Home', 'Home Fund')">
+                    <div class="registry-content">
+                        <div class="icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>Help Towards A Home</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="registryModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3 id="modal-title"></h3>
+        <p id="modal-description"></p>
+        <div class="amount-options">
+            <div class="amount-buttons">
+                <button onclick="setAmount(25)" class="btn btn-outline-primary">$25</button>
+                <button onclick="setAmount(50)" class="btn btn-outline-primary">$50</button>
+                <button onclick="setAmount(100)" class="btn btn-outline-primary">$100</button>
+            </div>
+            <div class="custom-amount">
+                <label for="custom-amount">Custom Amount:</label>
+                <input type="number" id="custom-amount" min="25" max="10000" step="25" onchange="setAmount(this.value)">
+            </div>
+            <h4>Amount: $<span id="amount-display">0</span></h4>
+        </div>
+        <div class="payment-options">
+            <div class="payment-option" onclick="handlePayment('venmo')">
+                <i class="fab fa-square-vimeo"></i>
+                <p>Venmo<br>@travis-barton12</p>
+            </div>
+            <div class="payment-option" onclick="handlePayment('paypal')">
+                <i class="fab fa-paypal"></i>
+                <p>PayPal<br>travisbarton2025</p>
+            </div>
+            <div class="payment-option" onclick="handlePayment('zelle')">
+                <i class="fas fa-money-bill-wave"></i>
+                <p>Zelle<br>Click to copy info</p>
+            </div>
+        </div>
+        <div id="zelle-info" style="display: none;">
+            Phone: (408) 826-2999<br>
+            Email: sivartnotrab@gmail.com
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center content">
+                <p>Crafted by Travis with lots of <span class="fas fa-heart pulse2"></span> for Lindsey</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+let currentAmount = 0;
+
+function openRegistryModal(title, description) {
+    const modal = document.getElementById('registryModal');
+    // document.getElementById('modal-title').textContent = title;
+    // document.getElementById('modal-description').textContent = description;
+    document.getElementById('modal-title').textContent = description;
+
+    // Set default amount based on selection
+    let defaultAmount = 25;
+    if (title.includes('Honeymoon')) {
+        defaultAmount = 50;
+    } else if (title.includes('Home')) {
+        defaultAmount = 100;
+    }
+    setAmount(defaultAmount);
+    modal.style.display = 'block';
+}
+
+function setAmount(amount) {
+    currentAmount = parseInt(amount);
+    document.getElementById('amount-display').textContent = currentAmount;
+}
+
+function handlePayment(method) {
+    if (currentAmount < 25) {
+        alert('Please select an amount of $25 or more');
+        return;
+    }
+
+    const title = document.getElementById('modal-title').textContent;
+    switch(method) {
+        case 'venmo':
+            window.open(`https://venmo.com/travis-barton12?txn=pay&amount=${currentAmount}&note=${title}`);
+            break;
+        case 'paypal':
+            window.open(`https://paypal.me/travisbarton2025/${currentAmount}`);
+            break;
+        case 'zelle':
+            copyZelleInfo();
+            break;
+    }
+}
+
+function copyZelleInfo() {
+    const zelleInfo = "Phone: (408) 826-2999\nEmail: sivartnotrab@gmail.com";
+    navigator.clipboard.writeText("(408) 826-2999")
+        .then(() => {
+            const zelleDiv = document.getElementById('zelle-info');
+            zelleDiv.style.display = 'block';
+            zelleDiv.innerHTML += '<br><span style="color: green;">Copied to clipboard!</span>';
+            setTimeout(() => {
+                zelleDiv.style.display = 'none';
+                zelleDiv.innerHTML = zelleDiv.innerHTML.replace('<br><span style="color: green;">Copied to clipboard!</span>', '');
+            }, 2000);
+        });
+}
+
+// Close modal functionality
+document.querySelector('.close').addEventListener('click', () => {
+    document.getElementById('registryModal').style.display = 'none';
+});
+
+window.addEventListener('click', (event) => {
+    const modal = document.getElementById('registryModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+</script>
+
+<style>
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+.faq-heading {
+    font-size: 72px; /* Adjust the size as needed */
+}
+.registry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.registry-item {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.registry-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 20%;
+    max-width: 500px;
+    position: relative;
+}
+@media (max-width: 768px) {
+    .modal-content {
+        max-width: 80vw;
+
+    }
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.amount-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.custom-amount {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.payment-options {
+    grid-template-columns: 1fr;
+    display: grid;
+    gap: 20px;
+
+}
+
+.amount-buttons button.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.payment-option {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    background-color: #f8f9fd;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.payment-option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: #e9ecef;
+}
+
+.payment-option i {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.payment-option p {
+    margin: 0;
+    font-size: 16px;
+    color: #343a40;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 10% auto;
+        width: 95%;
+    }
+
+    .payment-options {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</body>
+</html>

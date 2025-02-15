@@ -443,6 +443,88 @@ Navigation
   visibility: hidden;
   transition: all 300ms ease-in-out;
 }
+/* ==========================================================================
+registry
+========================================================================== */
+.registry {
+  //background-color: #b3c7db; /* Use the same background as your header/footer */
+  padding: 10px 20px;
+
+  .registry-title {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  .registry-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .registry-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); // 3 equal columns
+    grid-auto-rows: auto;                // rows will size automatically
+    gap: 30px;                           // adjust gap as needed
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr; // 3x1 on mobile
+    }
+  }
+
+
+
+  .registry-item {
+    text-align: center;
+    border-radius: 12px; /* Slightly rounded corners */
+    padding: 30px;
+    border: 2px solid #c4aa78; /* Default border around each registry item */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+
+    &:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow */
+      filter: brightness(1.1); /* Slightly brighter */
+    }
+
+    .icon {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      margin: 10px 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #555;
+    }
+  }
+
+  /* Panel-Specific Styles */
+  .date-panel {
+    background: linear-gradient(135deg, #f8f9fd, #f8f9fd); /* Rich pink gradient */
+    border: 2px solid #fdd5d5; /* Override default border */
+    color: #694c4f; /* Contrast text color */
+  }
+
+  .honeymoon-panel {
+    background: linear-gradient(135deg, #f8f9fd, #f8f9fd); /* Vibrant teal gradient */
+    border: 2px solid #b8cedc; /* Override default border */
+    color: #4b6f7a; /* Contrast text color */
+  }
+
+  .home-panel {
+    background: linear-gradient(135deg, #f8f9fd, #f8f9fd); /* Fresh green gradient */
+    border: 2px solid #c7e0c9; /* Override default border */
+    color: #617361; /* Contrast text color */
+  }
+}
+
 
 /* ==========================================================================
 Model
@@ -586,6 +668,7 @@ header {
   ul.primary-nav {
     margin: 0 0 0 75px;
     padding: 0;
+    text-decoration: none;
 
     li {
       display: inline;
@@ -596,6 +679,7 @@ header {
 
         &:hover {
           color: $accent-color;
+          text-decoration: underline;
         }
       }
       &:last-child a {
@@ -810,6 +894,7 @@ Features-stack
     transform: translateX(-50%);
   }
 }
+
 
 /* ==========================================================================
 .faq-section
